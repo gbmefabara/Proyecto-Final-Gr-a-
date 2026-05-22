@@ -1,6 +1,6 @@
 """
 Módulo principal (main.py) del Servidor Web asíncrono para ESP32.
-Gestiona las peticiones HTTP de la interfaz web, traduce las acciones 
+Gestiona las peticiones HTTP de la interfaz web, traduce las acciones
 del usuario en comandos UART y los envía al Arduino Nano.
 Sirve también el archivo HTML para la interfaz de control remoto.
 """
@@ -42,12 +42,12 @@ async def read_telemetry():
                 if chunk:
                     # Decodificar omitiendo caracteres inválidos
                     buffer += chunk.decode('utf-8', 'ignore')
-                    
+                   
                     # Extraer líneas completas separadas por salto de línea
                     while "\n" in buffer:
                         line, buffer = buffer.split("\n", 1)
                         line = line.strip()
-                        
+                       
                         # Validación de paquete JSON básico
                         if line.startswith("{") and line.endswith("}"):
                             latest_telemetry = line
@@ -61,11 +61,11 @@ async def read_telemetry():
 async def handle_client(reader, writer):
     try:
         led.value(1) # Encender LED de estado
-        
+       
         # Leer petición HTTP del navegador
         request_bytes = await reader.read(1024)
         request = request_bytes.decode('utf-8')
-        
+       
         # Mapeo de rutas (Endpoints) a comandos UART
         comando = None
         if "GET /forward " in request: comando = 'F'
@@ -75,23 +75,23 @@ async def handle_client(reader, writer):
         elif "GET /left " in request: comando = 'L'
         elif "GET /right " in request: comando = 'R'
         elif "GET /stop " in request: comando = 'S'
-        
+       
         # Lógica de respuesta del servidor
         if comando:
             # Enviar el carácter por el puerto serial al Arduino Nano
             uart.write(comando)
             # Para peticiones de control (Fetch API), respondemos rápido y sin HTML
             response = "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nConnection: close\r\n\r\nOK"
-            
+           
         elif "GET /telemetry " in request:
             # Devolver los datos de telemetría en formato JSON con cabecera CORS
             response = f"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\nConnection: close\r\n\r\n{latest_telemetry}"
-            
+           
         elif "GET / " in request:
             # Si el usuario entra a la ruta principal, le entregamos la página web
             body = render_html()
             response = f"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n{body}"
-            
+           
         else:
             # Ruta no encontrada
             response = "HTTP/1.1 404 Not Found\r\nConnection: close\r\n\r\nNot Found"
@@ -99,7 +99,7 @@ async def handle_client(reader, writer):
         # Enviar la respuesta por Wi-Fi
         writer.write(response)
         await writer.drain()
-        
+       
     except Exception as e:
         print("Error en el cliente:", e)
     finally:
@@ -110,19 +110,19 @@ async def handle_client(reader, writer):
 # 5. Bucle Principal del Servidor
 async def main():
     print("Iniciando Servidor Web en el puerto 80...")
-    
+   
     # Iniciar la corrutina de lectura de telemetría en segundo plano
     asyncio.create_task(read_telemetry())
-    
+   
     # Iniciar el servidor web asíncrono
     server = await asyncio.start_server(handle_client, "0.0.0.0", 80)
-    
+   
     # Mantener el bucle vivo
     while True:
         await asyncio.sleep(1)
 
-# Iniciar la ejecución asíncrona
+# Ejecutar el servidor al final de main.py de manera segura
 try:
     asyncio.run(main())
 except KeyboardInterrupt:
-    print("Servidor detenido manualmente.")
+    print("\nServidor web detenido desde el teclado.")
