@@ -14,8 +14,8 @@ import uselect
 
 # --- CONFIGURACIÓN DE WI-FI ---
 # Los estudiantes pueden cambiar estas credenciales por las de su propia red o del colegio.
-SSID = "Claro_JC"  # Cambia esto por el nombre de tu red Wi-Fi
-PASSWORD = "1713283321!"
+SSID = "TU_RED_WIFI"  # Cambia esto por el nombre de tu red Wi-Fi
+PASSWORD = "TU_CLAVE_WIFI"  # Cambia esto por la contraseña de tu red Wi-Fi
 
 def connect_wifi(ssid=SSID, password=PASSWORD):
     """
