@@ -1,50 +1,61 @@
-# Proyecto Final: Grúa Torre de Doble Control
+# 🏗️ ¡Bienvenidos al Proyecto Grúa Torre de Control Dual!
 
-Este proyecto implementa un sistema de control dual para una grúa torre, permitiendo su operación tanto de forma manual (mediante joysticks físicos) como remota (a través de una interfaz web). Está diseñado con fines educativos para estudiantes de secundaria, integrando conceptos de microcontroladores, electrónica y desarrollo web.
+Este proyecto es una maqueta interactiva de una **Grúa Torre** real. Está diseñado para que estudiantes y entusiastas de la tecnología aprendan cómo dar vida a la ingeniería y la electrónica de forma divertida.
 
-## Arquitectura del Sistema
+La grúa se puede manejar de dos formas al mismo tiempo:
+1.  **Con palancas manuales (Joysticks):** Sentado frente a la grúa, moviendo las palancas físicas como si fueras un operador real en la cabina.
+2.  **Desde tu celular, tablet o computadora (Control Web):** Presionando botones en una pantalla táctil bonita desde cualquier rincón de la habitación.
 
-El sistema se compone de dos microcontroladores principales que se comunican a través de un puerto serial (UART) a 9600 baudios:
+---
 
-1.  **ESP32 (Módulo de Comunicaciones):**
-    *   Actúa como un servidor web asíncrono utilizando MicroPython.
-    *   Se conecta a la red Wi-Fi local.
-    *   Sirve la interfaz web (`index.html`) a los dispositivos clientes (teléfonos, tablets o computadoras).
-    *   Traduce las peticiones HTTP (botones presionados en la web) en comandos de un solo carácter que envía al Arduino Nano.
+## 🎮 ¿Cómo se controla la grúa?
 
-2.  **Arduino Nano (Controlador de Actuadores):**
-    *   Actúa como el cerebro principal para el movimiento mecánico, programado en C++.
-    *   Lee las entradas analógicas de tres joysticks para el control manual.
-    *   Controla dos motores DC (Carro y Elevación) utilizando un driver TB6612FNG.
-    *   Controla un motor a pasos Nema 17 (Rotación/Giro) utilizando un driver DRV8825 y la librería `AccelStepper` para movimientos suaves.
-    *   Implementa una lógica de prioridad donde los controles físicos (joysticks) tienen precedencia sobre los comandos web.
+La grúa tiene dos "cerebros electrónicos" que trabajan en equipo:
 
-## Estructura de Archivos
+*   **El Cerebro Wi-Fi (ESP32):** Es el encargado de recibir tus órdenes cuando presionas un botón en tu celular. Crea una señal Wi-Fi local y sirve la pantalla de control para que accedas a ella.
+*   **El Cerebro Mecánico (Arduino Nano):** Es el que está conectado directamente a los motores físicos y a las palancas manuales. Escucha al cerebro Wi-Fi y mueve la grúa según lo que le pidas.
 
-*   `boot.py`: Script de inicio de MicroPython en el ESP32. Configura la conexión a la red Wi-Fi.
-*   `main.py`: Script principal en el ESP32. Implementa el servidor web asíncrono (`uasyncio`), mapea las rutas HTTP y envía comandos UART.
-*   `index.html`: Interfaz web de control remoto. Diseñada para dispositivos móviles, utiliza la *Fetch API* para enviar comandos sin recargar la página e implementa medidas de seguridad (envío repetitivo de comandos).
-*   `grua_arduino.ino`: Código fuente en C++ para el Arduino Nano. Gestiona los drivers de motores, las entradas de los joysticks y la comunicación serial.
-*   `requirements.md`: Archivo de requerimientos técnicos o dependencias adicionales (no documentado en este alcance).
+---
 
-## Configuración y Puesta en Marcha
+## 🖥️ El Menú de Pantalla (¿Qué pasa al encender la grúa?)
 
-### 1. ESP32 (Servidor Web)
-1. Carga los archivos `boot.py`, `main.py` y `index.html` en la memoria del ESP32 (puedes usar Thonny IDE).
-2. Abre `boot.py` y modifica las variables `ssid` y `password` con los datos de tu red Wi-Fi local.
-3. Al encender, el ESP32 imprimirá en consola la dirección IP asignada.
+Cuando conectas el Cerebro Wi-Fi a tu computadora (por ejemplo, usando Thonny), verás aparecer un menú interactivo en tu pantalla con una **cuenta regresiva de 5 segundos**. Tienes dos opciones presionando los números en tu teclado:
 
-### 2. Arduino Nano (Control)
-1. Instala la librería `AccelStepper` en tu Arduino IDE (Herramientas > Administrar Bibliotecas).
-2. Compila y carga el archivo `grua_arduino.ino` al Arduino Nano.
+*   **Opción 1: Iniciar sistema normalmente (Modo Ejecución)**
+    *   *¿Cómo se activa?* Presiona el número `1` en tu teclado o simplemente **no presiones nada y espera 5 segundos**.
+    *   *¿Qué hace?* La grúa buscará tu red Wi-Fi local para conectarse. Una vez conectada, te mostrará un mensaje en pantalla diciendo:
+        `Ingresa esta Dirección IP en tu navegador: 192.168.X.X`
+        ¡Solo escribe ese número en el navegador de tu celular y tu control táctil estará listo para jugar!
+*   **Opción 2: Detener en modo programación (Liberar REPL)**
+    *   *¿Cómo se activa?* Presiona el número `2` en tu teclado antes de que la cuenta regresiva llegue a cero.
+    *   *¿Qué hace?* La grúa no intentará conectarse a internet ni arrancará los motores. Se quedará completamente en pausa para que tú puedas editar, borrar o subir nuevo código a los archivos de forma cómoda y segura.
 
-### 3. Conexiones Físicas
-*   **Comunicación:** Conecta el Pin TX (17) del ESP32 al Pin RX (D0) del Arduino Nano. (Asegúrate de unificar las tierras / GND).
-*   **Joysticks:** Conectados a los pines analógicos A0, A1 y A2 del Arduino Nano.
-*   **Motores DC (TB6612FNG):** Pines D2, D4 y PWM D3 (Motor A). Pines D7, D8 y PWM D5 (Motor B).
-*   **Motor a Pasos (DRV8825):** Pin STEP al D9 y Pin DIR al D10 del Arduino Nano.
+---
 
-## Seguridad
+## 🕹️ Manual de Movimientos: ¿Qué puedes hacer?
 
-*   **Timeout Web:** El Arduino detendrá automáticamente los motores si no recibe un comando válido del ESP32 en un lapso de 500ms.
-*   **Prioridad Manual:** Si se detecta movimiento en los joysticks, el sistema ignorará cualquier comando proveniente de la web.
+Con cualquiera de los dos controles (físico o digital), puedes realizar los siguientes movimientos:
+
+1.  **Carro (Trolley - Adelante y Atrás):** Mueve el carrito rojo a lo largo del brazo horizontal de la grúa para acercar o alejar la carga de la torre.
+2.  **Gancho (Hoist - Subir y Bajar):** Sube o baja el gancho naranja con el cable para levantar o soltar objetos.
+3.  **Giro (Slew - Rotación):** Gira toda la cabina y el brazo de la grúa en redondo hacia la izquierda o hacia la derecha.
+
+---
+
+## 📊 La Súper Pantalla de Control y Telemetría
+
+Cuando entras desde tu celular o computadora a la dirección IP de la grúa, verás un panel visual premium:
+*   **Dibujos Animados en Vivo:** Hay un gráfico interactivo que se mueve exactamente igual que tu grúa física. Si el carrito se mueve o el gancho baja en la realidad, ¡también verás el cambio en tu pantalla!
+*   **Regletas de Medición:** Te muestra en centímetros exactos la posición del carrito y la altura del gancho, además de los grados de giro de la grúa.
+*   **Monitor de Palancas:** Si alguien está moviendo las palancas físicas de la grúa, verás barras de colores reaccionando en tu pantalla táctil para saber qué está haciendo el operador manual.
+
+---
+
+## 🛡️ Sistemas de Seguridad Integrados (¿Cómo se autoprotege la grúa?)
+
+Para evitar accidentes y golpes, la grúa cuenta con dos reglas de oro automatizadas:
+
+1.  **¡El humano siempre manda primero! (Prioridad Manual)**
+    *   Si un usuario está controlando la grúa desde el celular, pero de repente alguien mueve una palanca física (Joystick) en la maqueta, **el control manual toma el mando de inmediato** e ignora las órdenes del celular. Esto sirve para reaccionar rápido ante cualquier peligro.
+2.  **Detector de Desconexión (Parada de Emergencia)**
+    *   Para evitar que la grúa siga moviéndose si se corta el Wi-Fi o si cierras la ventana del navegador por error, el celular envía señales de "sigo aquí" constantemente. Si la grúa deja de recibir estas señales por más de **medio segundo (500 milisegundos)**, todos los motores se apagan automáticamente.
