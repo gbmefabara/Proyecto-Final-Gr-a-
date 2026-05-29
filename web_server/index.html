@@ -639,6 +639,14 @@
             <a href="schema.html" class="theme-toggle-btn" style="width: auto; padding: 0 15px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; text-decoration: none; color: inherit;" title="Ver Esquema Electrónico">
                 📋 Ver Esquema
             </a>
+            <!-- Botón de Ir a Guía de Estudio -->
+            <a href="estudio.html" class="theme-toggle-btn" style="width: auto; padding: 0 15px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; text-decoration: none; color: inherit;" title="Ver Guía de Estudio para Exposición">
+                📚 Guía de Estudio
+            </a>
+            <!-- Botón de Ir a Presentación -->
+            <a href="presentacion.html" class="theme-toggle-btn" style="width: auto; padding: 0 15px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; text-decoration: none; color: inherit;" title="Ver Presentación de Exposición">
+                📢 Presentación
+            </a>
             <!-- Interruptor de modo (Toggle Switch): alterna el control entre Web y Joystick -->
             <div style="display: flex; align-items: center; gap: 8px;">
                 <span id="switchLabel" style="font-size: 13px; font-weight: 600; color: var(--text-secondary); transition: all 0.3s;">Control Web</span>
@@ -680,14 +688,14 @@
                 <h3>Gancho (Hoist)</h3>
                 <div class="control-row">
                     <button class="btn btn-elev" onpointerdown="iniciar('/up')" onpointerup="detener()" onpointerleave="detener()">
-                        <span>🏗️</span>
-                        <span>Subir</span>
-                        <span class="btn-label">Cable Up</span>
-                    </button>
-                    <button class="btn btn-elev" onpointerdown="iniciar('/down')" onpointerup="detener()" onpointerleave="detener()">
                         <span>⚓</span>
                         <span>Bajar</span>
                         <span class="btn-label">Cable Down</span>
+                    </button>
+                    <button class="btn btn-elev" onpointerdown="iniciar('/down')" onpointerup="detener()" onpointerleave="detener()">
+                        <span>🏗️</span>
+                        <span>Subir</span>
+                        <span class="btn-label">Cable Up</span>
                     </button>
                 </div>
             </div>
