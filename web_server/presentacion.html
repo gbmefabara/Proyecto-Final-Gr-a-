@@ -4,44 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exposición - Grúa Torre de Control Dual</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <script>
         const currentTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', currentTheme);
     </script>
     <style>
         :root {
-            /* Tema Oscuro por defecto */
-            --bg-color: #0b0f19;
-            --panel-bg: rgba(22, 30, 49, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
+            /* Tema Luxury Oscuro (Colegio Paulo VI) */
+            --bg-color: #070b1b;
+            --bg-gradient: radial-gradient(circle at 50% 50%, #0f183d 0%, #050814 100%);
+            --panel-bg: rgba(13, 23, 60, 0.65);
+            --border-color: rgba(237, 226, 33, 0.18);
             --text-primary: #ffffff;
-            --text-secondary: #8f9cae;
-            --accent-color: #00bcd4;
-            --accent-glow: rgba(0, 188, 212, 0.3);
+            --text-secondary: #9da8d1;
+            --accent-color: #ede221;
+            --accent-glow: rgba(237, 226, 33, 0.25);
             --success-color: #10b981;
             --error-color: #ef4444;
-            --card-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-            --code-bg: #111827;
-            --highlight-bg: rgba(0, 188, 212, 0.1);
-            --btn-hover-bg: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            --code-bg: #090d22;
+            --highlight-bg: rgba(237, 226, 33, 0.08);
+            --btn-hover-bg: rgba(237, 226, 33, 0.08);
         }
 
         [data-theme="light"] {
-            /* Tema Claro */
-            --bg-color: #f8fafc;
+            /* Tema Luxury Claro (Colegio Paulo VI) */
+            --bg-color: #f0f4ff;
+            --bg-gradient: radial-gradient(circle at 50% 50%, #e2ebff 0%, #cbd9fa 100%);
             --panel-bg: rgba(255, 255, 255, 0.85);
-            --border-color: rgba(15, 23, 42, 0.08);
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent-color: #0891b2;
-            --accent-glow: rgba(8, 145, 178, 0.2);
+            --border-color: rgba(25, 43, 109, 0.15);
+            --text-primary: #192b6d;
+            --text-secondary: #4d5e94;
+            --accent-color: #d6ca0c;
+            --accent-glow: rgba(214, 202, 12, 0.2);
             --success-color: #059669;
             --error-color: #dc2626;
-            --card-shadow: 0 12px 30px rgba(148, 163, 184, 0.15);
-            --code-bg: #f1f5f9;
-            --highlight-bg: rgba(8, 145, 178, 0.08);
-            --btn-hover-bg: rgba(15, 23, 42, 0.05);
+            --card-shadow: 0 15px 35px rgba(25, 43, 109, 0.1);
+            --code-bg: #e4ecfc;
+            --highlight-bg: rgba(25, 43, 109, 0.05);
+            --btn-hover-bg: rgba(25, 43, 109, 0.05);
         }
 
         * {
@@ -50,8 +52,9 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Nunito', sans-serif;
             background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
             color: var(--text-primary);
             margin: 0;
             padding: 0;
@@ -59,10 +62,6 @@
             flex-direction: column;
             min-height: 100vh;
             overflow: hidden;
-            background-attachment: fixed;
-            background-image: 
-                radial-gradient(at 5% 5%, rgba(0, 188, 212, 0.06) 0px, transparent 50%),
-                radial-gradient(at 95% 95%, rgba(156, 39, 176, 0.06) 0px, transparent 50%);
         }
 
         /* ENCABEZADO */
@@ -70,23 +69,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 15px 40px;
             background: var(--panel-bg);
             border-bottom: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 10;
         }
 
         header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
             margin: 0;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .header-logo {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
         }
 
         .header-nav {
@@ -96,7 +101,7 @@
         }
 
         .nav-btn {
-            background: var(--panel-bg);
+            background: rgba(25, 43, 109, 0.4);
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 8px 16px;
@@ -105,8 +110,9 @@
             justify-content: center;
             gap: 6px;
             cursor: pointer;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
             font-size: 12px;
             font-weight: 600;
             text-decoration: none;
@@ -116,11 +122,12 @@
         .nav-btn:hover {
             background: var(--highlight-bg);
             border-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-glow);
             transform: translateY(-1px);
         }
 
         .theme-toggle-btn {
-            background: var(--panel-bg);
+            background: rgba(25, 43, 109, 0.4);
             border: 1px solid var(--border-color);
             border-radius: 50%;
             width: 36px;
@@ -129,10 +136,18 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: var(--text-primary);
+            color: var(--accent-color);
             font-size: 16px;
-            box-shadow: var(--card-shadow);
-        }        /* DIAPOSITIVA CONTENEDOR */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        /* DIAPOSITIVA CONTENEDOR */
         .presentation-container {
             flex: 1;
             display: flex;
@@ -152,8 +167,8 @@
             border: 1px solid var(--border-color);
             border-radius: 24px;
             box-shadow: var(--card-shadow);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -171,7 +186,7 @@
             width: 0;
             height: 0;
             transform-style: preserve-3d;
-            transition: transform 1.4s cubic-bezier(0.25, 1, 0.2, 1);
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.2, 1);
         }
 
         .slide {
@@ -183,21 +198,21 @@
             transform-origin: center center;
             display: flex;
             flex-direction: column;
-            background: rgba(22, 30, 49, 0.4);
+            background: rgba(13, 23, 60, 0.35);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 30px 45px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            padding: 35px 45px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             pointer-events: none;
-            opacity: 0.15;
+            opacity: 0.1;
             transition: opacity 1.2s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         [data-theme="light"] .slide {
             background: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px 0 rgba(148, 163, 184, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(25, 43, 109, 0.05);
         }
 
         .slide.active {
@@ -208,28 +223,23 @@
         }
 
         /* Posicionamiento espacial de diapositivas en Prezi */
-        #slide-1 {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg) scale(1);
-        }
-        #slide-2 {
-            transform: translate(-50%, -50%) translate3d(1800px, 400px, -400px) rotate(-15deg) scale(0.7);
-        }
-        #slide-3 {
-            transform: translate(-50%, -50%) translate3d(800px, 1400px, 300px) rotate(20deg) scale(1.1);
-        }
-        #slide-4 {
-            transform: translate(-50%, -50%) translate3d(-1200px, 1200px, -200px) rotate(-25deg) scale(0.8);
-        }
-        #slide-5 {
-            transform: translate(-50%, -50%) translate3d(-600px, -800px, 400px) rotate(15deg) scale(1.2);
-        }
+        #slide-1 { transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg) scale(1); }
+        #slide-2 { transform: translate(-50%, -50%) translate3d(1800px, 400px, -400px) rotate(-15deg) scale(0.7); }
+        #slide-3 { transform: translate(-50%, -50%) translate3d(800px, 1400px, 300px) rotate(20deg) scale(1.1); }
+        #slide-4 { transform: translate(-50%, -50%) translate3d(-1200px, 1200px, -200px) rotate(-25deg) scale(0.8); }
+        #slide-5 { transform: translate(-50%, -50%) translate3d(-600px, -800px, 400px) rotate(15deg) scale(1.2); }
+        #slide-6 { transform: translate(-50%, -50%) translate3d(1400px, -1600px, -300px) rotate(-10deg) scale(0.95); }
+        #slide-7 { transform: translate(-50%, -50%) translate3d(2800px, -800px, 600px) rotate(25deg) scale(1.3); }
+        #slide-8 { transform: translate(-50%, -50%) translate3d(-2800px, 0, -600px) rotate(-35deg) scale(0.75); }
+        #slide-9 { transform: translate(-50%, -50%) translate3d(-2200px, -1800px, 200px) rotate(5deg) scale(1.05); }
+        #slide-10 { transform: translate(-50%, -50%) translate3d(0, -2600px, 900px) rotate(45deg) scale(1.4); }
 
         .slide-header {
             margin-bottom: 20px;
         }
 
         .slide-subtitle {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 2px;
@@ -239,11 +249,12 @@
         }
 
         .slide-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 32px;
-            font-weight: 800;
+            font-weight: 700;
             margin: 0;
             letter-spacing: -0.5px;
+            color: var(--text-primary);
         }
 
         .slide-content {
@@ -252,231 +263,178 @@
             padding-right: 10px;
         }
 
-        /* GRIDS Y ELEMENTOS INTERACTIVOS */
-        .grid-3 {
+        /* DISEÑO DE CONTENIDO Y ESTRUCTURA LUXURY */
+        .split-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            height: 100%;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 45% 55%;
             gap: 25px;
             height: 100%;
+            align-items: center;
         }
 
-        .stack-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
+        .split-layout-rev {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            gap: 25px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .text-panel {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
+        }
+
+        .media-panel {
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             height: 100%;
-        }
-
-        [data-theme="light"] .stack-card {
-            background: rgba(0, 0, 0, 0.01);
-        }
-
-        .stack-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0;
+            min-height: 250px;
+            max-height: 380px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: var(--accent-color);
-            padding-bottom: 8px;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        /* Filas de logos */
-        .card-logos-row {
-            display: flex;
+        .media-panel:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        .media-panel video, .media-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Grids de Imágenes */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 12px;
-            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .media-item {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            aspect-ratio: 4/3;
+            display: flex;
             align-items: center;
-            height: 45px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            justify-content: center;
         }
 
-        .card-logos-row img.card-logo {
-            height: 32px;
-            width: auto;
-            max-width: 45px;
-            object-fit: contain;
-            transition: transform 0.2s ease;
+        .media-item:hover {
+            transform: scale(1.04) translateY(-2px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
-        .stack-list {
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Listas Modernas */
+        .luxury-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             flex-direction: column;
+            gap: 12px;
+        }
+
+        .luxury-list li {
+            position: relative;
+            padding-left: 25px;
+            font-size: 14.5px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .luxury-list li strong {
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .luxury-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            text-shadow: 0 0 4px var(--accent-glow);
+        }
+
+        /* Botón de Redirección */
+        .redirect-btn-container {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .redirect-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #d6ca0c 100%);
+            border: none;
+            color: #0d173c;
+            padding: 12px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .stack-item {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.45;
+        .redirect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Portada e Intro */
+        .cover-layout {
             display: flex;
             flex-direction: column;
-        }
-
-        .stack-item strong {
-            color: var(--text-primary);
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .badge-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 5px;
-        }
-
-        .badge {
-            font-size: 10.5px;
-            font-family: 'Fira Code', monospace;
-            background: var(--code-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        /* TARJETAS DE VENTAJAS */
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .tool-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            gap: 15px;
-            transition: all 0.25s ease;
-        }
-
-        [data-theme="light"] .tool-card {
-            background: rgba(0, 0, 0, 0.01);
-        }
-
-        .tool-card:hover {
-            border-color: var(--accent-color);
-            background: var(--highlight-bg);
-        }
-
-        .tool-logo-wrapper {
-            display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
-            transform-style: preserve-3d;
+            text-align: center;
+            height: 100%;
+            gap: 25px;
         }
 
-        .tool-logo-wrapper img.card-logo {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-            transition: transform 0.2s ease;
+        .cover-logo {
+            max-height: 120px;
+            width: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
         }
 
-        .tool-info h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 15.5px;
-            font-weight: 700;
-            margin: 0 0 5px 0;
-            color: var(--text-primary);
-        }
-
-        .tool-info p {
-            margin: 0;
-            font-size: 12px;
+        .author-tag {
+            font-size: 13.5px;
             color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        /* SECCIÓN DOCUMENTACIÓN */
-        .doc-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .doc-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        [data-theme="light"] .doc-card {
-            background: rgba(0, 0, 0, 0.01);
-        }
-
-        .doc-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent-color);
-        }
-
-        .doc-card p {
-            margin: 0;
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        .doc-bullets {
-            margin: 5px 0 0 0;
-            padding-left: 20px;
-            font-size: 12.5px;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .doc-bullets li strong {
-            color: var(--text-primary);
-        }
-
-        /* ESTRUCTURA E INTERACTIVIDAD 3D (TILT & PARALLAX) */
-        .stack-card, .tool-card, .doc-card {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.1s ease-out, box-shadow 0.15s ease-out, background-color 0.3s, border-color 0.3s;
-        }
-
-        .parallax-logo {
-            transform: translateZ(35px);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
-        }
-
-        .parallax-text {
-            transform: translateZ(15px);
+            font-family: 'Nunito', sans-serif;
+            letter-spacing: 0.5px;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
         /* CONTROLES DE NAVEGACIÓN DIAPOSITIVAS */
@@ -491,12 +449,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 40px;
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(7, 11, 27, 0.4);
+            backdrop-filter: blur(10px);
             z-index: 5;
         }
 
         .slide-counter {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 13px;
             font-weight: 600;
             color: var(--text-secondary);
@@ -511,7 +470,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--border-color);
+            background: rgba(255, 255, 255, 0.15);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -528,11 +487,11 @@
         }
 
         .slide-nav-btn {
-            background: var(--panel-bg);
+            background: rgba(25, 43, 109, 0.4);
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 8px 18px;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 13px;
             font-weight: 700;
             color: var(--text-primary);
@@ -544,10 +503,11 @@
         .slide-nav-btn:hover:not(:disabled) {
             border-color: var(--accent-color);
             background: var(--highlight-bg);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .slide-nav-btn:disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
         }
 
@@ -555,9 +515,6 @@
         @media (max-width: 900px) {
             .slide-wrapper {
                 height: 700px;
-            }
-            .grid-3, .grid-2 {
-                grid-template-columns: 1fr;
             }
             .slide {
                 padding: 30px 40px;
@@ -594,7 +551,10 @@
 
     <!-- ENCABEZADO -->
     <header>
-        <h1><span>🏗️</span> <span>Exposición Grúa Torre</span></h1>
+        <h1>
+            <img src="media/Marca-Paulo-VI-Fondos-Oscuro.png" alt="Paulo VI Logo" class="header-logo">
+            <span>Grúa Torre de Control Dual</span>
+        </h1>
         <div class="header-nav">
             <a href="index.html" class="nav-btn" title="Ir al Panel de Control">🎮 Panel</a>
             <a href="schema.html" class="nav-btn" title="Ver Esquema Electrónico">📋 Esquema</a>
@@ -609,315 +569,247 @@
             <!-- ESCENARIO PREZI -->
             <div class="camera-stage">
                 
-                <!-- DIAPOSITIVA 1: STACK TECNOLÓGICO -->
+                <!-- DIAPOSITIVA 1: PORTADA -->
                 <div class="slide" id="slide-1">
-                    <div class="slide-header">
-                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 1</h3>
-                        <h2 class="slide-title">Stack Tecnológico del Sistema</h2>
-                    </div>
-                    <div class="slide-content">
-                        <div class="grid-3">
-                            <!-- Tarjeta Lenguajes -->
-                            <div class="stack-card">
-                                <h3>💻 Lenguajes de Programación</h3>
-                                <div class="card-logos-row">
-                                    <img class="card-logo parallax-logo" src="../img/ISO_C++_Logo.png" alt="C++">
-                                    <img class="card-logo parallax-logo" src="../img/Python-logo.png" alt="MicroPython">
-                                    <img class="card-logo parallax-logo" src="../img/HTML5_logo.png" alt="HTML5">
-                                    <img class="card-logo parallax-logo" src="../img/CSS3_logo.png" alt="CSS3">
-                                    <img class="card-logo parallax-logo" src="../img/JavaScript-Logo.png" alt="JS">
-                                </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>C++ (Arduino Wiring)</strong>
-                                        <span style="font-size: 11.5px;">Control en tiempo real, PWM de servomotores y lectura analógica de Joysticks con eliminación de zona muerta.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>MicroPython (v1.22)</strong>
-                                        <span style="font-size: 11.5px;">Gestión de la cola asíncrona UART y despliegue del Access Point Wi-Fi con servidor web embebido.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>HTML5 / CSS3 / Vanilla JS</strong>
-                                        <span style="font-size: 11.5px;">Renderizado de telemetría vectorizada en vivo con SVG, interacción serial síncrona y transiciones tridimensionales.</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Tarjeta Herramientas -->
-                            <div class="stack-card">
-                                <h3>🛠️ Herramientas de Desarrollo</h3>
-                                <div class="card-logos-row">
-                                    <img class="card-logo parallax-logo" src="../img/antigravity.png" alt="Antigravity">
-                                    <img class="card-logo parallax-logo" src="../img/Arduino_IDE_logo.png" alt="Arduino">
-                                    <img class="card-logo parallax-logo" src="../img/Thonny_logo.png" alt="Thonny">
-                                    <img class="card-logo parallax-logo" src="../img/VSCode.png" alt="VSCode">
-                                    <img class="card-logo parallax-logo" src="../img/github.png" alt="GitHub">
-                                </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>Antigravity IDE & Skills</strong>
-                                        <span style="font-size: 11.5px;">Optimización asistida por IA del frontend, modelado ágil con OpenSpec y diseño iterativo de interfaces didácticas.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>Arduino, Thonny & VS Code</strong>
-                                        <span style="font-size: 11.5px;">Compilación y flashing nativo a placas, interacción interactiva REPL en vivo y centralización limpia del workspace.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>GitHub / Git</strong>
-                                        <span style="font-size: 11.5px;">Versionamiento colaborativo, documentación y resguardo de la arquitectura modular del código de control.</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Tarjeta Despliegue -->
-                            <div class="stack-card">
-                                <h3>🚀 Despliegue Físico Tripartito</h3>
-                                <div class="card-logos-row" style="justify-content: space-around; font-size: 22px;">
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">💻</span>
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">📶</span>
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">🔌</span>
-                                </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>1. Laptop (Web Server Principal)</strong>
-                                        <span style="font-size: 11.5px;">Carga local del panel en el cliente y comunicación directa con el hardware mediante la API Web Serial a 115200 baudios.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>2. ESP32 (Servidor Secundario)</strong>
-                                        <span style="font-size: 11.5px;">Punto de acceso Wi-Fi autónomo. Servidor WebSockets asíncrono para retransmitir diagnósticos y telemetría a dispositivos móviles.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>3. Arduino Nano (Control Físico)</strong>
-                                        <span style="font-size: 11.5px;">Ejecución a nivel de metal de bucles de control PWM, desacoplamiento y lectura física de potenciómetros e interruptores.</span>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="cover-layout">
+                        <img src="media/Marca-Paulo-VI-Fondos-Oscuro.png" alt="Colegio Paulo VI" class="cover-logo">
+                        <h2 class="slide-title" style="font-size: 38px; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">Grúa Torre de Control Dual</h2>
+                        <h3 class="slide-subtitle" style="font-size: 13px;">Proyecto de Grado · Ingeniería y Mecatrónica</h3>
+                        <p class="author-tag">
+                            <strong>Integrantes:</strong> Poleth Morales · Renata Duque · Emilia Fabara · Johanán Castro <br>
+                            <strong>Docentes / Asesores:</strong> Área de Tecnología & Electrónica · 2026
+                        </p>
+                        <div class="media-grid" style="grid-template-columns: repeat(6, 1fr); margin-top: 15px; width: 85%;">
+                            <div class="media-item"><img src="media/image1.png" alt="Detalle 1"></div>
+                            <div class="media-item"><img src="media/image2.png" alt="Detalle 2"></div>
+                            <div class="media-item"><img src="media/image3.png" alt="Detalle 3"></div>
+                            <div class="media-item"><img src="media/image4.png" alt="Detalle 4"></div>
+                            <div class="media-item"><img src="media/image5.png" alt="Detalle 5"></div>
+                            <div class="media-item"><img src="media/image6.png" alt="Detalle 6"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA 2: VENTAJAS DE LAS HERRAMIENTAS -->
+                <!-- DIAPOSITIVA 2: INTRODUCCIÓN -->
                 <div class="slide" id="slide-2">
                     <div class="slide-header">
-                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 2</h3>
-                        <h2 class="slide-title">Ventajas y Utilidad de las Herramientas</h2>
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 1</h3>
+                        <h2 class="slide-title">Introducción al Proyecto</h2>
                     </div>
                     <div class="slide-content">
-                        <div class="tool-grid">
-                            <!-- Antigravity IDE -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper">
-                                    <img class="card-logo parallax-logo" src="../img/antigravity.png" alt="Antigravity">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>Antigravity IDE & Skills</h4>
-                                    <p><strong>Utilidad:</strong> Asistente de programación con IA. Permitió agilizar el maquetado estético responsive, solucionar bloqueos de Web Serial e integrar metodologías OpenSpec/Brainstorming.</p>
-                                </div>
-                            </div>
-                            <!-- Arduino IDE -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper">
-                                    <img class="card-logo parallax-logo" src="../img/Arduino_IDE_logo.png" alt="Arduino">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>Arduino IDE</h4>
-                                    <p><strong>Utilidad:</strong> Compilación rápida para el microcontrolador ATmega328P. Pruebas dinámicas en Serial Plotter y despliegue del enlace SoftwareSerial a 9600 baudios.</p>
+                        <div class="split-layout">
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Solución Mecatrónica:</strong> Sistema funcional diseñado para la elevación y traslado de cargas en ejes tridimensionales.</li>
+                                    <li><strong>Control Inalámbrico:</strong> Operable remotamente a través de una interfaz web local optimizada.</li>
+                                    <li><strong>Arquitectura Integrada:</strong> Fusión de piezas modeladas digitalmente con un núcleo de control electrónico asíncrono.</li>
+                                </ul>
+                                <div class="media-grid" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px;">
+                                    <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image8.png" alt="Grúa 1"></div>
+                                    <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image9.png" alt="Grúa 2"></div>
                                 </div>
                             </div>
-                            <!-- Thonny IDE -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper">
-                                    <img class="card-logo parallax-logo" src="../img/Thonny_logo.png" alt="Thonny">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>Thonny IDE</h4>
-                                    <p><strong>Utilidad:</strong> Debugging rápido del microcontrolador ESP32 mediante consola interactiva REPL. Flasheo directo de scripts asíncronos y monitor de red AP local.</p>
-                                </div>
-                            </div>
-                            <!-- VS Code -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper">
-                                    <img class="card-logo parallax-logo" src="../img/VSCode.png" alt="VSCode">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>Visual Studio Code</h4>
-                                    <p><strong>Utilidad:</strong> Entorno de edición central. Estructuración modular de directorios, resaltado de sintaxis multiplataforma y previsualización en tiempo real de gráficos vectoriales SVG.</p>
-                                </div>
-                            </div>
-                            <!-- GitHub -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper">
-                                    <img class="card-logo parallax-logo" src="../img/github.png" alt="GitHub">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>GitHub & Git</h4>
-                                    <p><strong>Utilidad:</strong> Control de versiones robusto. Facilitó la reversibilidad instantánea de código ante fallos de hardware y el resguardo de la base del repositorio.</p>
-                                </div>
-                            </div>
-                            <!-- OpenSpec -->
-                            <div class="tool-card">
-                                <div class="tool-logo-wrapper" style="display: flex; gap: 4px;">
-                                    <img class="card-logo parallax-logo" src="../img/antigravity.png" alt="Antigravity" style="width: 20px; height: 20px;">
-                                    <img class="card-logo parallax-logo" src="../img/github.png" alt="GitHub" style="width: 20px; height: 20px;">
-                                </div>
-                                <div class="tool-info parallax-text">
-                                    <h4>OpenSpec & Brainstorming</h4>
-                                    <p><strong>Utilidad:</strong> Desarrollo guiado por contratos y validación de features. Aseguró que las asignaciones físicas de pines coincidieran en esquemas y código de control.</p>
-                                </div>
+                            <div class="media-panel">
+                                <video src="media/VAHK_haVdY0.mp4" autoplay loop muted playsinline></video>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA 3: DOCUMENTACIÓN Y GITHUB -->
+                <!-- DIAPOSITIVA 3: OBJETIVOS -->
                 <div class="slide" id="slide-3">
                     <div class="slide-header">
-                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 3</h3>
-                        <h2 class="slide-title">Documentación, Versionamiento y OpenSpec</h2>
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 2</h3>
+                        <h2 class="slide-title">Objetivos de Ingeniería</h2>
                     </div>
                     <div class="slide-content">
-                        <div class="grid-2">
-                            <!-- Git & Github -->
-                            <div class="doc-card">
-                                <div class="card-logos-row" style="border:none; margin:0; padding:0; height:32px; justify-content:flex-end;">
-                                    <img class="card-logo parallax-logo" src="../img/github.png" alt="GitHub">
-                                </div>
-                                <h3>🐙 Control de Versiones con Git y GitHub</h3>
-                                <p>El uso de un sistema de control de versiones estructurado aportó beneficios de nivel profesional al equipo de desarrollo:</p>
-                                <ul class="doc-bullets">
-                                    <li><strong>Trazabilidad Absoluta:</strong> Historial preciso de cambios con autoría y marcas de tiempo para depuración de ramas estables.</li>
-                                    <li><strong>Estadísticas del Repositorio:</strong> Análisis automático del porcentaje de uso de cada lenguaje (C++, Python, HTML, CSS, JavaScript).</li>
-                                    <li><strong>Seguridad Operativa:</strong> Capacidad de realizar rollbacks asíncronos y recrear el entorno funcional ante cualquier inestabilidad eléctrica.</li>
-                                </ul>
+                        <div class="split-layout-rev">
+                            <div class="media-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                <div class="media-item"><img src="media/image11.png" alt="Obj 1"></div>
+                                <div class="media-item"><img src="media/image12.png" alt="Obj 2"></div>
+                                <div class="media-item"><img src="media/image13.png" alt="Obj 3"></div>
+                                <div class="media-item"><img src="media/image14.png" alt="Obj 4"></div>
+                                <div class="media-item"><img src="media/image15.png" alt="Obj 5"></div>
+                                <div class="media-item"><img src="media/image16.png" alt="Obj 6"></div>
                             </div>
-                            <!-- README & OpenSpec -->
-                            <div class="doc-card">
-                                <div class="card-logos-row" style="border:none; margin:0; padding:0; height:32px; justify-content:flex-end;">
-                                    <img class="card-logo parallax-logo" src="../img/antigravity.png" alt="OpenSpec">
-                                </div>
-                                <h3>📋 Documentación en README.md y OpenSpec</h3>
-                                <p>La documentación formal es lo que define el éxito a largo plazo de un desarrollo de ingeniería:</p>
-                                <ul class="doc-bullets">
-                                    <li><strong>Punto de Entrada README.md:</strong> Documento técnico integral que detalla el cableado físico de pines, comandos seriales del protocolo y arranque local.</li>
-                                    <li><strong>Diseño Guiado por Especificaciones:</strong> OpenSpec define el comportamiento esperado del sistema mediante contratos legibles por agentes.</li>
-                                    <li><strong>Validación Automatizada:</strong> Detección temprana de incompatibilidades de pines o discrepancias en los esquemas electrónicos antes de subir cambios.</li>
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>01/ Diseñar en CAD:</strong> Modelar componentes en Fusion 360 garantizando estabilidad física y ensambles precisos.</li>
+                                    <li><strong>02/ Integrar Electrónica:</strong> Cablear microcontroladores y puentes H para un reparto de potencia eficiente.</li>
+                                    <li><strong>03/ Desarrollar Servidor:</strong> Crear el gateway asíncrono para coordinar comandos web en tiempo real.</li>
+                                    <li><strong>04/ Validar Desempeño:</strong> Someter la maqueta a pruebas de carga física y alcance inalámbrico.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA 4: APARTADO ELECTRÓNICO -->
+                <!-- DIAPOSITIVA 4: INTRO TÉCNICA -->
                 <div class="slide" id="slide-4">
                     <div class="slide-header">
-                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 4</h3>
-                        <h2 class="slide-title">Diseño Electrónico y Clasificación de Componentes</h2>
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 3</h3>
+                        <h2 class="slide-title">Programación y Electrónica</h2>
                     </div>
                     <div class="slide-content">
-                        <div class="grid-3">
-                            <!-- Sensores/Entradas -->
-                            <div class="stack-card">
-                                <h3>🕹️ Dispositivos de Entrada (Sensores)</h3>
-                                <div class="card-logos-row" style="justify-content: flex-start; font-size: 22px;">
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">🕹️</span>
-                                    <img class="card-logo parallax-logo" src="../img/Arduino_IDE_logo.png" alt="Arduino">
-                                </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>Joystick 1 (Giro y Elevación)</strong>
-                                        <span style="font-size: 11.5px;">Potenciómetros analógicos ratiométricos de 10KΩ leídos en pines A0 y A1 por el ADC de 10 bits del Arduino Nano.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>Joystick 2 (Carro y Modo)</strong>
-                                        <span style="font-size: 11.5px;">Eje X analógico (A2) controla el carro horizontal. Pulsador digital (A3) conmuta el modo de operación con debounce de 50ms.</span>
-                                    </li>
+                        <div class="split-layout">
+                            <div class="text-panel">
+                                <h3 style="font-family: 'Poppins', sans-serif; color: var(--accent-color); margin: 0 0 10px 0;">El Núcleo Inteligente</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin: 0;">
+                                    El control dual de la grúa torre se apoya en dos arquitecturas complementarias: la transmisión de pulsos analógicos locales mediante hardware dedicado y la serialización de comandos digitales desde un cliente web centralizado.
+                                </p>
+                                <ul class="luxury-list" style="margin-top: 15px;">
+                                    <li><strong>Web Serial API:</strong> Conexión directa por cable USB a 115200 baudios sin latencia.</li>
+                                    <li><strong>Gateway Wifi:</strong> Servidor Socket local en el microcontrolador secundario.</li>
                                 </ul>
                             </div>
-                            <!-- Procesamiento/Gateway -->
-                            <div class="stack-card">
-                                <h3>🤖 Procesamiento y Gateway</h3>
-                                <div class="card-logos-row">
-                                    <img class="card-logo parallax-logo" src="../img/Arduino_IDE_logo.png" alt="Arduino">
-                                    <img class="card-logo parallax-logo" src="../img/Python-logo.png" alt="MicroPython">
-                                </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>Arduino Nano (Controlador Central)</strong>
-                                        <span style="font-size: 11.5px;">ATmega328P de 8 bits. Lee los sensores analógicos, verifica el modo activo y genera señales PWM y de dirección física.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>ESP32 Gateway (Inalámbrico)</strong>
-                                        <span style="font-size: 11.5px;">Xtensa de 32 bits. Provee la red Wi-Fi local AP, aloja el Web Server local y traslada los comandos web por UART2 al Arduino Nano.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>Acoplamiento de Niveles UART</strong>
-                                        <span style="font-size: 11.5px;">Divisor resistivo de voltaje (1kΩ/2kΩ) que reduce de forma segura las señales de transmisión de 5V del Nano a los 3.3V lógicos del ESP32.</span>
-                                    </li>
-                                </ul>
+                            <div class="media-grid" style="grid-template-columns: 1fr 1fr; gap: 15px; height: 100%;">
+                                <div class="media-item" style="aspect-ratio: 1; height: 100%;"><img src="media/image18.png" alt="Circuito 1"></div>
+                                <div class="media-item" style="aspect-ratio: 1; height: 100%;"><img src="media/image19.png" alt="Circuito 2"></div>
                             </div>
-                            <!-- Actuadores -->
-                            <div class="stack-card">
-                                <h3>⚡ Elementos de Fuerza (Actuadores)</h3>
-                                <div class="card-logos-row" style="justify-content: space-around; font-size: 22px;">
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">⚙️</span>
-                                    <span class="parallax-logo" style="display:inline-block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">⚡</span>
-                                    <img class="card-logo parallax-logo" src="../img/Arduino_IDE_logo.png" alt="Arduino">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIAPOSITIVA 5: ARQUITECTURA ELECTRÓNICA -->
+                <div class="slide" id="slide-5">
+                    <div class="slide-header">
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 4</h3>
+                        <h2 class="slide-title">Arquitectura Electrónica y Control</h2>
+                    </div>
+                    <div class="slide-content">
+                        <div class="split-layout">
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Control Principal:</strong> Arduino Nano lee palancas y regula señales PWM físicas de los motores.</li>
+                                    <li><strong>Gateway Inalámbrico:</strong> ESP32 en MicroPython recibe registros y gestiona el Access Point local.</li>
+                                    <li><strong>Acoplamiento UART:</strong> Divisor de voltaje resistivo para seguridad a 3.3V lógicos.</li>
+                                </ul>
+                                <div class="redirect-btn-container">
+                                    <a id="btnLinkSchema" href="schema.html" class="redirect-btn">🔌 Ver Esquema Electrónico Interactivo</a>
                                 </div>
-                                <ul class="stack-list">
-                                    <li class="stack-item">
-                                        <strong>Driver TB6612FNG #1 (Carro y Giro)</strong>
-                                        <span style="font-size: 11.5px;">Puente H dual de alta eficiencia MOSFET. Controla velocidad PWM y sentido de rotación en 2 motores independientes.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>Driver TB6612FNG #2 (Elevación)</strong>
-                                        <span style="font-size: 11.5px;">Puente H con canales en paralelo para maximizar la disipación térmica y capacidad de corriente (1.2A continuos) en el motor de elevación.</span>
-                                    </li>
-                                    <li class="stack-item">
-                                        <strong>Motorreductores N20 DC (9V)</strong>
-                                        <span style="font-size: 11.5px;">Motores metálicos de precisión. Relación 30 RPM para rotación pluma libre de balanceo, y 300 RPM para carro y elevación rápidos.</span>
-                                    </li>
+                            </div>
+                            <div class="media-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                <div class="media-item"><img src="media/image21.png" alt="Hardware 1"></div>
+                                <div class="media-item"><img src="media/image22.png" alt="Hardware 2"></div>
+                                <div class="media-item"><img src="media/image23.png" alt="Hardware 3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIAPOSITIVA 6: DISEÑO CAD -->
+                <div class="slide" id="slide-6">
+                    <div class="slide-header">
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 5</h3>
+                        <h2 class="slide-title">Diseño y Modelado 3D</h2>
+                    </div>
+                    <div class="slide-content">
+                        <div class="split-layout-rev">
+                            <div class="media-grid" style="grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image24.png" alt="Fusion 360 1"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image25.png" alt="Fusion 360 2"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image26.png" alt="Fusion 360 3"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image27.png" alt="Fusion 360 4"></div>
+                            </div>
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Fusion 360:</strong> Modelado paramétrico digital tridimensional de las piezas mecánicas estructurales.</li>
+                                    <li><strong>Tolerancia Milimétrica:</strong> Diseño de engranes, tambores de bobinado y poleas con holgura de acoplamiento controlada.</li>
+                                    <li><strong>Estabilidad Física:</strong> Pruebas estáticas virtuales de centro de gravedad para balancear la pluma y contrapluma.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA 5: PRUEBAS Y FUNCIONAMIENTO -->
-                <div class="slide" id="slide-5">
+                <!-- DIAPOSITIVA 7: FABRICACIÓN -->
+                <div class="slide" id="slide-7">
                     <div class="slide-header">
-                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 5</h3>
-                        <h2 class="slide-title">Modelado CAD, Fabricación y Pruebas del Sistema</h2>
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 6</h3>
+                        <h2 class="slide-title">Manufactura y Fabricación</h2>
                     </div>
                     <div class="slide-content">
-                        <div class="grid-2">
-                            <!-- Modelado y Estructura -->
-                            <div class="doc-card">
-                                <div class="card-logos-row" style="border:none; margin:0; padding:0; height:32px; justify-content:flex-end; font-size: 22px; gap: 8px;">
-                                    <span class="parallax-logo" style="display:inline-block;">📐</span>
-                                    <span class="parallax-logo" style="display:inline-block;">🪵</span>
-                                    <span class="parallax-logo" style="display:inline-block;">🖨️</span>
-                                </div>
-                                <h3>🏗️ Modelado y Fabricación Estructural</h3>
-                                <p>El prototipo físico de la grúa torre requirió combinar múltiples tecnologías de diseño y manufactura:</p>
-                                <ul class="doc-bullets">
-                                    <li><strong>Diseño Paramétrico en Fusion 360:</strong> Modelado completo en 3D de todas las piezas estructurales, poleas, soportes de motores y cajas protectoras para asegurar encajes y holguras milimétricas.</li>
-                                    <li><strong>Estructura de MDF (Corte Láser):</strong> Mástil vertical, pluma horizontal y contrapluma cortados en planchas de MDF de 3mm, asegurando ligereza y excelente resistencia a la flexión.</li>
-                                    <li><strong>Piezas en Impresión 3D (PLA):</strong> Púas y engranajes reductores a medida, tambor de enrolle para el cable de elevación, poleas con rodamientos y carcasas de protección de los circuitos lógicos.</li>
+                        <div class="split-layout">
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Corte Láser (MDF):</strong> Planchas de 3mm cortadas para conformar la celosía rígida del mástil y brazos horizontales.</li>
+                                    <li><strong>Impresión 3D (PLA):</strong> Púas reductoras, carcasas de circuitos y soporte giratorio fabricados a medida en polímero termoplástico.</li>
+                                    <li><strong>Estructura Híbrida:</strong> Combinación de madera y plástico para un balance ideal de masa y rigidez.</li>
                                 </ul>
                             </div>
-                            <!-- Pruebas y calibracion -->
-                            <div class="doc-card">
-                                <div class="card-logos-row" style="border:none; margin:0; padding:0; height:32px; justify-content:flex-end;">
-                                    <img class="card-logo parallax-logo" src="../img/antigravity.png" alt="OpenSpec">
-                                    <img class="card-logo parallax-logo" src="../img/github.png" alt="GitHub">
-                                </div>
-                                <h3>⚙️ Pruebas en Conjunto y Calibración</h3>
-                                <p>La integración final se validó sistemáticamente para garantizar un funcionamiento seguro y coordinado de la grúa:</p>
-                                <ul class="doc-bullets">
-                                    <li><strong>Calibración de Entrada Analógica:</strong> Configuración de una zona muerta de control (deadband) por software en el sketch de Arduino para evitar vibraciones en reposo.</li>
-                                    <li><strong>Protocolo UART & Level Shifting:</strong> Comunicación continua a 115200 baudios sin pérdida de frames, protegida eléctricamente por el divisor de tensión.</li>
-                                    <li><strong>Principio de Exclusividad de Mando:</strong> Se validó el bloqueo mutuo. Si el joystick físico de control manual está activo en local, se rechazan las peticiones web remotas, y viceversa, para evitar comandos cruzados peligrosos.</li>
+                            <div class="media-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                <div class="media-item"><img src="media/image28.png" alt="Impresión 1"></div>
+                                <div class="media-item"><img src="media/image29.png" alt="Corte Láser"></div>
+                                <div class="media-item"><img src="media/image30.png" alt="Piezas fabricadas"></div>
+                                <div class="media-item"><img src="media/image31.png" alt="Montaje 1"></div>
+                                <div class="media-item" style="grid-column: span 2; aspect-ratio: auto; height: 100%;"><img src="media/image32.png" alt="Estructura general"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIAPOSITIVA 8: ENSAMBLAJE -->
+                <div class="slide" id="slide-8">
+                    <div class="slide-header">
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 7</h3>
+                        <h2 class="slide-title">Ensamblaje y Calibración</h2>
+                    </div>
+                    <div class="slide-content">
+                        <div class="split-layout-rev">
+                            <div class="media-grid" style="grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                                <div class="media-item"><img src="media/image33.png" alt="Ensamblaje 1"></div>
+                                <div class="media-item"><img src="media/image34.png" alt="Ensamblaje 2"></div>
+                                <div class="media-item"><img src="media/image35.png" alt="Ensamblaje 3"></div>
+                                <div class="media-item"><img src="media/image36.png" alt="Ensamblaje 4"></div>
+                                <div class="media-item"><img src="media/image37.png" alt="Ensamblaje 5"></div>
+                                <div class="media-item"><img src="media/image38.png" alt="Ensamblaje 6"></div>
+                            </div>
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Montaje Mecánico:</strong> Acoplamiento de motorreductores N20 metálicos y rodamientos axiales.</li>
+                                    <li><strong>Calibración de Sensores:</strong> Ajuste de zona muerta analógica (`deadband`) en software para evitar derivas físicas en los Joysticks.</li>
+                                    <li><strong>Tensión de Cableado:</strong> Distribución interna limpia de cables para evitar enredos en los giros de 360°.</li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- DIAPOSITIVA 9: CONCLUSIONES -->
+                <div class="slide" id="slide-9">
+                    <div class="slide-header">
+                        <h3 class="slide-subtitle">Defensa de Proyecto · Sección 8</h3>
+                        <h2 class="slide-title">Conclusiones del Proyecto</h2>
+                    </div>
+                    <div class="slide-content">
+                        <div class="split-layout">
+                            <div class="text-panel">
+                                <ul class="luxury-list">
+                                    <li><strong>Estructura Robusta:</strong> El modelado CAD cumplió con las tolerancias, logrando una grúa estable bajo carga.</li>
+                                    <li><strong>Integración Lograda:</strong> El protocolo UART entre Arduino Nano y ESP32 retransmitió telemetría sin latencia detectable.</li>
+                                    <li><strong>Control Seguro:</strong> El principio de exclusividad de mando funcionó correctamente como parada de seguridad.</li>
+                                </ul>
+                            </div>
+                            <div class="media-grid" style="grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image40.png" alt="Final 1"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image41.png" alt="Final 2"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image42.png" alt="Final 3"></div>
+                                <div class="media-item" style="aspect-ratio: 16/9;"><img src="media/image43.png" alt="Final 4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIAPOSITIVA 10: CIERRE -->
+                <div class="slide" id="slide-10">
+                    <div class="cover-layout">
+                        <img src="media/Marca-Paulo-VI-Fondos-Oscuro.png" alt="Colegio Paulo VI" class="cover-logo" style="max-height: 140px;">
+                        <h2 class="slide-title" style="font-size: 40px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); color: var(--accent-color);">¡Gracias por su Atención!</h2>
+                        <h3 class="slide-subtitle" style="font-size: 14px; letter-spacing: 3px;">Defensa de Proyecto de Grado · Paulo VI 2026</h3>
+                        <p class="author-tag" style="font-size: 15px;">
+                            "Modelando el aprendizaje de ingeniería del mañana."
+                        </p>
+                        <div class="media-item" style="width: 320px; aspect-ratio: 16/9; margin-top: 10px;"><img src="media/image7.png" alt="Foto Final"></div>
                     </div>
                 </div>
 
@@ -951,7 +843,12 @@
             { x: 1800, y: 400, z: -400, r: -15, s: 0.7 },
             { x: 800, y: 1400, z: 300, r: 20, s: 1.1 },
             { x: -1200, y: 1200, z: -200, r: -25, s: 0.8 },
-            { x: -600, y: -800, z: 400, r: 15, s: 1.2 }
+            { x: -600, y: -800, z: 400, r: 15, s: 1.2 },
+            { x: 1400, y: -1600, z: -300, r: -10, s: 0.95 },
+            { x: 2800, y: -800, z: 600, r: 25, s: 1.3 },
+            { x: -2800, y: 0, z: -600, r: -35, s: 0.75 },
+            { x: -2200, y: -1800, z: 200, r: 5, s: 1.05 },
+            { x: 0, y: -2600, z: 900, r: 45, s: 1.4 }
         ];
 
         // Hidratación y generación de dots dinámica
@@ -973,8 +870,18 @@
             slides.forEach((slide, idx) => {
                 if (idx === currentSlideIdx) {
                     slide.classList.add('active');
+                    // Iniciar reproducción de video si la diapositiva activa lo contiene
+                    const video = slide.querySelector('video');
+                    if (video) {
+                        video.play().catch(e => console.log('Autoplay blocked by browser'));
+                    }
                 } else {
                     slide.classList.remove('active');
+                    // Detener reproducción de video al salir de la diapositiva
+                    const video = slide.querySelector('video');
+                    if (video) {
+                        video.pause();
+                    }
                 }
             });
 
@@ -997,6 +904,12 @@
             if (camera) {
                 const param = slideParams[currentSlideIdx];
                 camera.style.transform = `scale(${1 / param.s}) rotate(${-param.r}deg) translate3d(${-param.x}px, ${-param.y}px, ${-param.z}px)`;
+            }
+
+            // Actualizar URL del botón de esquema electrónico
+            const schemaBtn = document.getElementById('btnLinkSchema');
+            if (schemaBtn) {
+                schemaBtn.href = `schema.html?fromSlide=${currentSlideIdx}`;
             }
         }
 
@@ -1034,7 +947,7 @@
 
         // Inicializar el efecto de inclinación 3D (Tilt) y Parallax en tarjetas
         function initCard3DTilt() {
-            const cards = document.querySelectorAll('.stack-card, .tool-card, .doc-card');
+            const cards = document.querySelectorAll('.stack-card, .tool-card, .doc-card, .media-item, .media-panel');
             cards.forEach(card => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
@@ -1088,6 +1001,19 @@
         document.documentElement.setAttribute('data-theme', initialTheme);
         themeToggle.innerText = initialTheme === 'dark' ? '🌙' : '☀️';
 
+        // Actualizar logo institucional inicial según el tema cargado
+        const updateHeaderLogo = (theme) => {
+            const logoImgs = document.querySelectorAll('.header-logo, .cover-logo');
+            logoImgs.forEach(img => {
+                if (theme === 'dark') {
+                    img.src = 'media/Marca-Paulo-VI-Fondos-Oscuro.png';
+                } else {
+                    img.src = 'media/Marca-Paulo-VI-Fondo-Blanco.png';
+                }
+            });
+        };
+        updateHeaderLogo(initialTheme);
+
         themeToggle.addEventListener('click', () => {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -1101,7 +1027,18 @@
             }
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            updateHeaderLogo(newTheme);
         });
+
+        // Lógica para recuperar la diapositiva desde la URL en el arranque
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideParam = urlParams.get('slide');
+        if (slideParam !== null) {
+            currentSlideIdx = parseInt(slideParam, 10);
+            if (isNaN(currentSlideIdx) || currentSlideIdx < 0 || currentSlideIdx >= slides.length) {
+                currentSlideIdx = 0;
+            }
+        }
 
         // Inicialización
         updateSlideUI();
