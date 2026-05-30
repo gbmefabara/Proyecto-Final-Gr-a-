@@ -721,7 +721,6 @@
     <!-- BARRA LATERAL NAVEGACIÓN (Desktop) -->
     <nav class="sidebar">
         <div class="logo-area">
-            <img src="media/Marca-Paulo-VI-Fondos-Oscuro.png" alt="Colegio Paulo VI" class="sidebar-logo">
             <h2>Estudio TorreGrúa</h2>
         </div>
         <ul class="nav-menu">
@@ -751,10 +750,6 @@
         <header>
             <h1 id="tabTitle">Libro de Conceptos</h1>
             <div class="header-nav">
-                <a href="index.html" class="nav-btn" title="Volver al Panel de Control">🎮 Panel</a>
-                <a href="schema.html" class="nav-btn" title="Ver Esquema Electrónico">📋 Esquema</a>
-                <a href="estudio.html" class="nav-btn" title="Ver Guía de Estudio Completa">📚 Guía</a>
-                <a href="presentacion.html" class="nav-btn" title="Ver Presentación de Exposición">📢 Presentación</a>
                 <button id="themeToggle" class="theme-toggle-btn" title="Alternar tema claro/oscuro">🌙</button>
             </div>
         </header>
@@ -1555,14 +1550,6 @@
         document.documentElement.setAttribute('data-theme', initialTheme);
         themeToggle.innerText = initialTheme === 'dark' ? '🌙' : '☀️';
 
-        const updateLogo = (theme) => {
-            const logo = document.querySelector('.sidebar-logo');
-            if (logo) {
-                logo.src = theme === 'dark' ? 'media/Marca-Paulo-VI-Fondos-Oscuro.png' : 'media/Marca-Paulo-VI-Fondo-Blanco.png';
-            }
-        };
-        updateLogo(initialTheme);
-
         themeToggle.addEventListener('click', () => {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -1576,7 +1563,6 @@
             }
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateLogo(newTheme);
         });
     </script>
 </body>
