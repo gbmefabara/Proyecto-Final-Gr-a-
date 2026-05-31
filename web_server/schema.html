@@ -2085,6 +2085,16 @@
                 localStorage.setItem('theme', newTheme);
                 themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
             });
+
+            // --- 8. LÓGICA DE RETORNO A LA DIAPOSITIVA ESPECÍFICA ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromSlide = urlParams.get('fromSlide');
+            if (fromSlide !== null) {
+                const presLinks = document.querySelectorAll('a[href="presentacion.html"]');
+                presLinks.forEach(link => {
+                    link.href = `presentacion.html?slide=${fromSlide}`;
+                });
+            }
         });
     </script>
 </body>
